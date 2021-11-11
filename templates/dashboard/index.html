@@ -1,0 +1,31 @@
+{% extends 'partials/base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% include 'partials/nav.html' %}
+<div class="container">
+<div class="row mt-4">
+    <div class="col-md-8 offset-md-2">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Position</th>
+                <th scope="col">Name</th>
+                <th scope="col">PaySlip</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for staff in staff %}
+              <tr>
+                <td>{{ staff.grade_status.position }}</td>
+                <td><span>{{ staff.first_name }}</span> <span>{{ staff.last_name}}</span></td>
+                <td> <a class="btn btn-primary btn-sm" href="{% url 'dashboard-payslip' staff.id %}">View PaySilp</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+</div>
+
+{% endblock %}
